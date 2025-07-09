@@ -9,6 +9,7 @@ const user_schema = new Schema({
   email_id: {
     type: String,
     requried: true,
+    unique:true
   },
 
   password: {
@@ -16,27 +17,38 @@ const user_schema = new Schema({
     required: true,
   },
 
+  role:{
+    type:String,
+    enum:["admin","user"],
+    default:"user",
+    required:true
+  },
+
   created_post: [
     {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref:'blog'
     },
   ],
 
   saved_post: [
     {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref:'blog'
     },
   ],
 
   liked_post: [
     {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref:'blog'
     },
   ],
 
   commented_post: [
     {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref:'blog'
     },
   ],
 },{timestamps:true});

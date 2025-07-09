@@ -9,8 +9,7 @@ const mongodb_db = async () => {
   }
 };
 
-const redis_db = async()=>{
-   const client = createClient({
+  const client = createClient({
       username: process.env.REDIS_USERNAME,
       password: process.env.REDIS_PASSWORD,
       socket: {
@@ -21,9 +20,10 @@ const redis_db = async()=>{
 
     client.on("error", (err) => console.log("Redis Client Error", err));
 
+const redis_db = async()=>{
     await client.connect();
     console.log("redis database connected successfully");
  
 }
 
-export {mongodb_db, redis_db} ;
+export {mongodb_db, client, redis_db} ;
