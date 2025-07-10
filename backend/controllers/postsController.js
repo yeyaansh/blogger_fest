@@ -127,20 +127,14 @@ const likePost = async (req, res) => {
     if (doExists) {
       postsData.likes--;
 
-      req.user.liked_post = req.user.liked_post.filter((data) =>
-        !data.equals(id)
+      req.user.liked_post = req.user.liked_post.filter(
+        (data) => !data.equals(id)
       );
       console.log(liked_post);
       console.log("abhi hua hai bhiaya: " + postsData.likes);
       await req.user.save();
       await postsData.save();
     }
-
-    //     postsData.likes--;
-    //     await req.user.save(); // save user's data (with updated liked_post array)
-    //     await postsData.save(); // save post's data (with updated likes count)
-    //     console.log("minus karne ka logic likhata hoon bhai..");
-    //     break;
   } else {
     postsData.likes++; // increase the number(like) by one;
     liked_post.push(postsData._id); // push the post id in user's liked_post array;
