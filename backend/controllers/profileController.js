@@ -59,19 +59,21 @@ const loginProfile = async (req, res) => {
   }
 };
 
+const logoutProfile = async (req, res) => {
+  const { token } = req.cookies;
+  await client.set(`Blocked-Token:${token}`, "blocked");
+
+  await res.clearCookie("token");
+
+  res.status(200).send("Succesfully LoggedOut");
+};
+
 const updateProfile = async (req, res) => {
   try {
-    if (
-      !req.body.full_name ||
-      !req.body.email_id ||
-      !req.body.password ||
-      !req.body.role
-    )
-      throw new Error("Missing Credentials");
+    verifyInputDetails(req.body);
 
     req.user.full_name = req.body.full_name;
     req.user.password = await bcrypt.hash(req.body.password, 10);
-    console.log(req.user.full_name, " ", req.user.password);
 
     const data = await req.user.save();
 
@@ -98,4 +100,10 @@ const deleteProfile = async (req, res) => {
   }
 };
 
-export { createProfile, updateProfile, deleteProfile, loginProfile };
+export {
+  createProfile,
+  updateProfile,
+  deleteProfile,
+  loginProfile,
+  logoutProfile,
+};
