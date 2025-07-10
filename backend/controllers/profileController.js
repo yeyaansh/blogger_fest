@@ -26,59 +26,76 @@ const createProfile = async (req, res) => {
 };
 
 const loginProfile = async (req, res) => {
-  const { email_id, password } = req.body;
+  try {
+    const { email_id, password } = req.body;
 
-  if (!email_id) {
-    throw new Error("Missing Credentials");
+    if (!email_id) {
+      throw new Error("Missing Credentials");
+    }
+    if (!password) {
+      throw new Error("Missing Credentials");
+    }
+
+    const userData = await User.findOne({ email_id });
+    // console.log(...user);
+    if (!userData) throw new Error("Invalid Email or Password");
+
+    // console.log(...userData)
+
+    // console.log(userData.password)
+
+    // console.log(userData)
+
+    const isValidPassword = await bcrypt.compare(password, userData.password);
+    if (!isValidPassword) throw new Error("Invalid Email or Password");
+
+    const token = await genCookie(userData);
+    res.cookie("token", token, { maxAge: 24 * 60 * 60 * 1000 });
+
+    res.status(200).send("Successfully LoggedIn");
+  } catch (err) {
+    console.log("error in loginProfile: " + err);
+    res.status(500).send(err.message);
   }
-  if (!password) {
-    throw new Error("Missing Credentials");
-  }
-
-  const userData = await User.findOne({ email_id });
-  // console.log(...user);
-  if (!userData) throw new Error("Invalid Email or Password");
-
-  // console.log(...userData)
-
-  // console.log(userData.password)
-
-  // console.log(userData)
-
-  const isValidPassword = await bcrypt.compare(password, userData.password);
-  if (!isValidPassword) throw new Error("Invalid Email or Password");
-
-  const token = await genCookie(userData);
-  res.cookie("token", token, { maxAge: 24 * 60 * 60 * 1000 });
-
-  res.status(200).send("Successfully LoggedIn");
 };
 
 const updateProfile = async (req, res) => {
-  if (
-    !req.body.full_name ||
-    !req.body.email_id ||
-    !req.body.password ||
-    !req.body.role
-  )
-    throw new Error("Missing Credentials");
+  try {
+    if (
+      !req.body.full_name ||
+      !req.body.email_id ||
+      !req.body.password ||
+      !req.body.role
+    )
+      throw new Error("Missing Credentials");
 
-  req.user.full_name = req.body.full_name;
-  req.user.password = await bcrypt.hash(req.body.password, 10);
-  console.log(req.user.full_name, " ", req.user.password);
+    req.user.full_name = req.body.full_name;
+    req.user.password = await bcrypt.hash(req.body.password, 10);
+    console.log(req.user.full_name, " ", req.user.password);
 
-  const data = await req.user.save();
+    const data = await req.user.save();
 
-  console.log(data);
+    console.log(data);
 
-  res.send("Updated Succesfully");
+    res.send("Updated Succesfully");
+  } catch (err) {
+    console.log("error in updateProfile: " + err);
+    res.status(500).send(err.message);
+  }
 };
 
 const deleteProfile = async (req, res) => {
-  const { token } = req.cookies;
-  await client.set(`Blocked-Token:${token}`, "blocked");
-  await res.clearCookie("token");
-  res.send("Your are LoggedOut");
+  try {
+    const { token } = req.cookies;
+    await client.set(`Blocked-Token:${token}`, "blocked");
+    await res.clearCookie("token");
+    // console.log(req.user._id);
+    await User.findByIdAndDelete(req.user._id);
+    res.send("Your are LoggedOut");
+  } catch (err) {
+    console.log("error in deleteProfile: " + err);
+    res.status(500).send(err.message);
+  }
 };
 
 export { createProfile, updateProfile, deleteProfile, loginProfile };
