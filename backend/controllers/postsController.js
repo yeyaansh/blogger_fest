@@ -1,5 +1,18 @@
 import Blog from "../database/schemas/blog_post_schema.js";
 
+const viewAllPost = async (req, res) => {
+  let page = req.query.page;
+  if(!page){
+    page = 1;
+  }
+  const limit = 10;
+  const skip = (page - 1) * limit;
+
+  const data = await Blog.find().select('_id title likes').skip(skip).limit(limit);
+//   console.log(data)
+  res.send(data);
+};
+
 const viewPost = async (req, res) => {
   try {
     const { id } = req.params;
@@ -146,4 +159,12 @@ const likePost = async (req, res) => {
   res.send(postsData.likes);
 };
 const commentPost = async (req, res) => {};
-export { viewPost, createPost, updatePost, deletePost, likePost, commentPost };
+export {
+  viewPost,
+  createPost,
+  updatePost,
+  deletePost,
+  likePost,
+  commentPost,
+  viewAllPost,
+};

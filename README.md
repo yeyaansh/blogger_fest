@@ -1,7 +1,8 @@
 This is an AI powered Blog Website with multiple features.
 
 <details>
-<summary>Future Improvements or Features</summary>
+<summary><strong>Future Improvements or Features</strong></summary>
+<br>
 <details>
 <summary><strong>Features</strong></summary>
 <i>1. Add Comment Feature via route '/user/actions/comment';
@@ -21,7 +22,7 @@ This is an AI powered Blog Website with multiple features.
 
 <details>
 <summary><strong>My Learnings</strong></summary>
-
+<br>
 <details>
 <summary><strong>explore about equals()</strong></summary>
 
