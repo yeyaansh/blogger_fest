@@ -13,6 +13,7 @@ The .equals() method you're using for comparing Mongoose ObjectIDs is a specific
 <em>error that got me stuck for a long time
 </em>
 <p>
+```
 ```javascript
 
 const idToRemoveOrAdd = id; // Assuming 'id' is a Mongoose ObjectId
@@ -37,10 +38,11 @@ if (isLiked) {
   console.log(postsData.likes);
 }
 ```
+```
 </p>
 
 <i>this logic of code had eaten my whole day</i>
-
+```
 ```javascript
     const doExists = liked_post.some((checker) => checker.equals(id));
 
@@ -55,8 +57,7 @@ if (isLiked) {
       await req.user.save();
       await postsData.save();
     }
-      ```
-
-
+```
+```
 </details>
 
