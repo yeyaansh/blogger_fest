@@ -122,11 +122,17 @@ const deletePost = async (req, res) => {
 
 // AI generated content
 const aiGenerationPost = async(req,res)=>{
+try{
 const {user_input} = req.body;
 const data = await aiGenerated(user_input);
 let cleanedString = data.replace(/```json/g, '').replace(/```/g, '').trim();
 const newData = await JSON.parse(cleanedString);
 res.send(newData);
+}
+catch(err){
+  console.log("error in aiGenerationPost: "+ err)
+  res.status(500).send(err.message)
+}
 }
 
 // what user's perform on any post

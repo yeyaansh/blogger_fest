@@ -56,7 +56,7 @@ The JSON object MUST have the following three keys:
 \`\`\``,
     },
   });
-  console.log(response);
+  // console.log(response);
   return response.text;
 }
 
