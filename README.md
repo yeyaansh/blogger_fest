@@ -5,8 +5,9 @@ This is an AI powered Blog Website with multiple features.
 <br>
 <details>
 <summary><strong>Features</strong></summary>
-<i>1. Add Comment Feature via route '/user/actions/comment';
-
+<i>
+1. Add Comment Feature via route '/user/actions/comment';
+2. Add Text to AI Generated Image Feature via route '/ai/generate/image' 
 </i>
 
 </details>

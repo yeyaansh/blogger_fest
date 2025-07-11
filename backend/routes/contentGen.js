@@ -1,6 +1,6 @@
 import express from "express";
 import authenticator from "../middleware/authenticatorUser.js";
-import { viewPost, createPost, updatePost, deletePost, likePost, commentPost,viewAllPost } from "../controllers/postsController.js";
+import { viewPost, createPost, updatePost, deletePost, likePost, commentPost,viewAllPost, aiGenerationPost } from "../controllers/postsController.js";
 const contentGen = express.Router();
 
 
@@ -9,6 +9,9 @@ contentGen.get("/view/post/:id",authenticator,viewPost);
 contentGen.post("/create/post",authenticator,createPost);
 contentGen.put("/update/post/:id",authenticator,updatePost);
 contentGen.delete("/delete/post/:id",authenticator,deletePost);
+
+// ai generated operations
+contentGen.post("/ai/generate/post",authenticator,aiGenerationPost)
 
 // actions performed by users on blogs
 contentGen.post("/actions/like/:id",authenticator,likePost);
