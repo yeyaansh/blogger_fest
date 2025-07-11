@@ -8,7 +8,7 @@ This is an AI powered Blog Website with multiple features.
 <li><details>
 <summary><strong>Features</strong></summary>
 <i>
-1. Add Comment Feature via route '/user/actions/comment';
+1. Add Comment Feature via route '/user/actions/comment'; <br>
 2. Add Text to AI Generated Image Feature via route '/ai/generate/image' (present in controllers)
 </i>
 
@@ -67,8 +67,19 @@ In the second example, all fruits are checked, but "kiwi" isn't found, so false 
 </details></li>
 </ul>
 
+</details></li>
 
-
-
+<li><details>
+<summary><strong>Tech Stacks or Technologies Used</strong> </summary>
+<ul>
+<li>Express.js (API)</li>
+<li>Gemini AI (GenAI)</li>
+<li>MongoDB (mongoose)</li>
+<li>Redis (authentication jwt blocking)</li>
+<li>JWT (jsonwebtoken)</li>
+<li>Password Hashing (bcrypt)</li>
+<li>Validator (to check email and strong password)</li>
+</ul>
 </details></li>
 </ol>
+
