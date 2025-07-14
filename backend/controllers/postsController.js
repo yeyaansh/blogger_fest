@@ -9,7 +9,7 @@ const viewAllPost = async (req, res) => {
   const limit = 10;
   const skip = (page - 1) * limit;
 
-  const data = await Blog.find().select('_id title likes').skip(skip).limit(limit);
+  const data = await Blog.find().select('_id title likes createdAt tags').skip(skip).limit(limit);
 //   console.log(data)
   res.send(data);
 };

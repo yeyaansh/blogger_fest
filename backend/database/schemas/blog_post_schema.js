@@ -4,7 +4,7 @@ const blog_post_schema = new Schema(
     title: {
       type: String,
       minLenth: 3,
-      maxLength: 80,
+      maxLength: 90,
       required: true,
     },
     description: {

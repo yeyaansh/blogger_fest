@@ -3,6 +3,19 @@ import apiRequest from "../api/apiRequest.js";
 import GalaxyLoader from "../utilis/loading_snippet.jsx";
 import isNew from "../utilis/isNew.js";
 import img1 from "../images/collection/img-1.jpg";
+import img2 from "../images/collection/img-2.jpg";
+import img3 from "../images/collection/img-3.jpg";
+import img4 from "../images/collection/img-4.jpg";
+import img5 from "../images/collection/img-5.jpg";
+import img6 from "../images/collection/img-6.jpg";
+import img7 from "../images/collection/img-7.jpg";
+import img8 from "../images/collection/img-8.jpg";
+import img9 from "../images/collection/img-9.jpg";
+import img10 from "../images/collection/img-10.jpg";
+import img11 from "../images/collection/img-11.jpg";
+import img12 from "../images/collection/img-12.jpg";
+import img13 from "../images/collection/img-13.jpg";
+import img14 from "../images/collection/img-14.jpg";
 import { Heart, AlertCircle, Clock, Tag, Moon, Sun } from "lucide-react";
 
 export default function Body() {
@@ -13,6 +26,14 @@ export default function Body() {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("darkMode") === "true" || false
   );
+  
+  const imgArray = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14];
+  
+  // Function to get random image
+  const getRandomImage = () => {
+    const randomIndex = Math.floor(Math.random() * imgArray.length);
+    return imgArray[randomIndex];
+  };
 
   useEffect(() => {
     // Disable transitions during theme switch
@@ -143,7 +164,7 @@ export default function Body() {
               {/* Image Container */}
               <div className="relative aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-700">
                 <img 
-                  src={img1} 
+                  src={getRandomImage()} 
                   alt={card?.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   loading="lazy"
@@ -221,9 +242,9 @@ export default function Body() {
         }
         
         /* Disable all transitions when switching themes */
-        {/* .no-transitions * {
+        .no-transitions * {
           transition: none !important;
-        } */}
+        } 
       `}</style>
     </div>
   );

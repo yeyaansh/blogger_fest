@@ -7,7 +7,20 @@ import {mongodb_db,redis_db} from "./connection_establishment.js";
 import cookieParser from "cookie-parser";
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+
+const corsOptions = {
+  // You MUST specify the exact origin. A wildcard (*) is not allowed
+  // when credentials: true is set.
+  origin: ['http://localhost:5173','https://api.yeyaansh.com'], 
+  
+  // This tells the browser that the server is willing to accept cookies
+  // from a cross-origin request.
+  credentials: true, 
+};
+
+app.use(cors(corsOptions)); //
+
 app.use(express.json());
 app.use(cookieParser());
 app.use('/account',account);
