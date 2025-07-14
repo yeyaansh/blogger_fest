@@ -1,0 +1,132 @@
+/* LiquidMorphLoader.css */
+.liquid-loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.liquid-loader {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+
+.liquid-loader svg {
+  width: 100%;
+  height: 100%;
+}
+
+.blob {
+  fill: #2d3436;
+  transform-origin: center;
+}
+
+.blob-1 {
+  animation: morph-1 4s ease-in-out infinite;
+}
+
+.blob-2 {
+  animation: morph-2 4s ease-in-out infinite;
+}
+
+.blob-3 {
+  animation: morph-3 4s ease-in-out infinite;
+}
+
+.blob-4 {
+  animation: morph-4 4s ease-in-out infinite;
+}
+
+@keyframes morph-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30px, -30px) scale(1.3);
+  }
+  66% {
+    transform: translate(30px, -30px) scale(0.8);
+  }
+}
+
+@keyframes morph-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(0.8);
+  }
+  66% {
+    transform: translate(30px, 30px) scale(1.3);
+  }
+}
+
+@keyframes morph-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, 30px) scale(1.3);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.8);
+  }
+}
+
+@keyframes morph-4 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 30px) scale(0.8);
+  }
+  66% {
+    transform: translate(-30px, -30px) scale(1.3);
+  }
+}
+
+/* .liquid-text {
+  margin-top: 50px;
+  display: flex;
+  gap: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3436;
+} */
+
+.letter {
+  display: inline-block;
+  animation: wave 1.5s ease-in-out infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+.letter:nth-child(1) { --i: 0; }
+.letter:nth-child(2) { --i: 1; }
+.letter:nth-child(3) { --i: 2; }
+.letter:nth-child(4) { --i: 3; }
+.letter:nth-child(5) { --i: 4; }
+.letter:nth-child(6) { --i: 5; }
+.letter:nth-child(7) { --i: 6; }
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
+
+
+

@@ -3,12 +3,17 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { ThemeProvider } from "@/components/theme-provider";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router";
+import NoPage from "./components/pages/NoPage.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <BrowserRouter>
-        <App />
+        <Routes>
+
+          <Route path="*" element={<App></App>}/>
+          
+        </Routes>
       </BrowserRouter>
     </ThemeProvider>
   </StrictMode>

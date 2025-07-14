@@ -13,15 +13,15 @@ function App() {
       <div className="m-3">
         <Header></Header>
         <Routes>
-          <Route path="/" element={<Body></Body>}></Route>
+          <Route index element={<Body></Body>}></Route>
           <Route
-            path="/login"
+            path="login"
             element={
               <LoginForm className={"w-full min-w-3xs max-w-xs"}></LoginForm>
             }
           ></Route>
           <Route
-            path="/register"
+            path="register"
             element={
               <RegisterForm
                 className={"w-full min-w-3xs max-w-xs"}
