@@ -5,3 +5,7 @@ Bad control character in string literal in JSON at position 3335 (line 3 column 
 Expected ',' or '}' after property value in JSON at position 941 (line 3 column 844)
 
 Bad control character in string literal in JSON at position 4065 (line 3 column 3963)
+
+Expected ',' or '}' after property value in JSON at position 3121 (line 3 column 3030)
+
+Bad control character in string literal in JSON at position 1930 (line 3 column 1853)

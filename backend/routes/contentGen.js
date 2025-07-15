@@ -4,8 +4,8 @@ import { viewPost, createPost, updatePost, deletePost, likePost, commentPost,vie
 const contentGen = express.Router();
 
 
-contentGen.get("/view-all/post",authenticator,viewAllPost);
-contentGen.get("/view/post/:id",authenticator,viewPost);
+contentGen.get("/view-all/post",viewAllPost); // removed 'authenticator' to allow everyone to view all the posts
+contentGen.get("/view/post/:id",viewPost); // removed 'authenticator' to allow everyone to view the post by id
 contentGen.post("/create/post",authenticator,createPost);
 contentGen.put("/update/post/:id",authenticator,updatePost);
 contentGen.delete("/delete/post/:id",authenticator,deletePost);

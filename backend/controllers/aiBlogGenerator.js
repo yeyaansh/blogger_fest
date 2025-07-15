@@ -34,6 +34,15 @@ When generating the content for the blog post, you must adhere to these three co
     *   **Scan-Friendly Formatting:** The content must be highly readable. Use short paragraphs (2-4 sentences), descriptive subheadings, bullet points, and numbered lists. **You must use Markdown for formatting** (e.g., \`## Subheading\`, \`* Bullet point\`).
     *   **Logical Flow:** Ensure a clear structure: Introduction, Body, and a powerful Conclusion that summarizes the key message and includes a call-to-action.
 
+**JSON Formatting Rules (CRITICAL FOR VALID OUTPUT):**
+
+To ensure your output is valid JSON, you MUST:
+- Replace ALL actual newlines with \\n (backslash-n)
+- Replace ALL quotes inside strings with \\" (backslash-quote)
+- Never include raw line breaks in the JSON output
+- Keep the entire JSON on a single line (using \\n for formatting within strings)
+- Double-check that every { has a matching } and every [ has a matching ]
+
 **Part 2: Output Format and Rules**
 
 Your final and ONLY output must be a single, raw JSON object. Do not include any text, explanations, or markdown formatting like \`\`\`json before or after the JSON object.

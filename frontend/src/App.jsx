@@ -6,6 +6,7 @@ import Body from "./controller/Body";
 import Footer from "./controller/Footer";
 import { Routes, Route } from "react-router";
 import NoPage from "./components/pages/NoPage";
+import ShowPostById from "./utilis/showPostById.jsx";
 function App() {
   // const classTame = " w-full min-w-3xs max-w-xs";
   return (
@@ -14,6 +15,7 @@ function App() {
         <Header></Header>
         <Routes>
           <Route index element={<Body></Body>}></Route>
+          <Route path="/view/post/:id" element={<ShowPostById></ShowPostById>}></Route>
           <Route
             path="login"
             element={

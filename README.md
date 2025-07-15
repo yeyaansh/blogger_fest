@@ -79,7 +79,7 @@ In the second example, all fruits are checked, but "kiwi" isn't found, so false 
 <li>JWT (jsonwebtoken)</li>
 <li>Password Hashing (bcrypt)</li>
 <li>Validator (to check email and strong password)</li>
+<li>React-Markdown (to format the text coming from database)</li>
 </ul>
 </details></li>
 </ol>
-

@@ -6,7 +6,7 @@ const viewAllPost = async (req, res) => {
   if(!page){
     page = 1;
   }
-  const limit = 10;
+  const limit = 16;
   const skip = (page - 1) * limit;
 
   const data = await Blog.find().select('_id title likes createdAt tags').skip(skip).limit(limit);
@@ -20,7 +20,7 @@ const viewPost = async (req, res) => {
     // console.log(id);
     if (!id) throw new Error("This Blog Post Doesn't Exist");
 
-    const blog_post_data = await Blog.findById(id);
+    const blog_post_data = await Blog.findById(id).populate('created_by',"full_name")
 
     if (!blog_post_data) throw new Error("This Blog Post Doesn't Exist");
 

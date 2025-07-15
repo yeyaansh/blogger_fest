@@ -16,7 +16,8 @@ import img11 from "../images/collection/img-11.jpg";
 import img12 from "../images/collection/img-12.jpg";
 import img13 from "../images/collection/img-13.jpg";
 import img14 from "../images/collection/img-14.jpg";
-import { Heart, AlertCircle, Clock, Tag, Moon, Sun } from "lucide-react";
+import { Heart, AlertCircle, Clock, Tag} from "lucide-react";
+import { useNavigate } from "react-router";
 
 export default function Body() {
   const [posts, setPosts] = useState([]);
@@ -26,6 +27,8 @@ export default function Body() {
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("darkMode") === "true" || false
   );
+
+  const Navigate = useNavigate();
   
   const imgArray = [img1,img2,img3,img4,img5,img6,img7,img8,img9,img10,img11,img12,img13,img14];
   
@@ -149,7 +152,9 @@ export default function Body() {
         {/* Posts Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
           {posts.map((card, index) => (
-            <div
+            <div onClick={()=>{
+              Navigate(`/view/post/${card?._id}`)
+            }}
               key={card?._id}
               className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl dark:shadow-gray-900/50 transition-shadow transition-transform duration-500 transform hover:-translate-y-2"
               style={{
