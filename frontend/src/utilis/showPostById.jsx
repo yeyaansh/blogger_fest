@@ -2,7 +2,6 @@ import { useEffect, useState, useMemo, useCallback } from "react";
 import { useParams } from "react-router";
 import apiClient from "../api/apiRequest";
 import ReactMarkdown from "react-markdown";
-import GalaxyLoader from "../utilis/loading_snippet.jsx";
 import { 
   CircleUserRound, 
   Heart, 

@@ -1,4 +1,24 @@
-/* LiquidMorphLoader.css */
+LiquidMorphLoader.css
+:root {
+  /* Light mode colors */
+  --bg-color: #f8f9fa;
+  --blob-color: #2d3436;
+}
+
+/* Dark mode colors */
+.dark {
+  --bg-color: #1a1a1a;
+  --blob-color: #e0e0e0;
+}
+
+/* Auto dark mode support */
+@media (prefers-color-scheme: dark) {
+  .liquid-loader-container:not(.light) {
+    --bg-color: #1a1a1a;
+    --blob-color: #e0e0e0;
+  }
+}
+
 .liquid-loader-container {
   position: fixed;
   top: 0;
@@ -9,8 +29,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
+  background: var(--bg-color);
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .liquid-loader {
@@ -25,8 +46,9 @@
 }
 
 .blob {
-  fill: #2d3436;
+  fill: var(--blob-color);
   transform-origin: center;
+  transition: fill 0.3s ease;
 }
 
 .blob-1 {
@@ -93,16 +115,6 @@
   }
 }
 
-/* .liquid-text {
-  margin-top: 50px;
-  display: flex;
-  gap: 4px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #2d3436;
-} */
-
 .letter {
   display: inline-block;
   animation: wave 1.5s ease-in-out infinite;
@@ -125,8 +137,3 @@
     transform: translateY(-10px);
   }
 }
-
-
-
-
-

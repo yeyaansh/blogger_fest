@@ -24,9 +24,7 @@ export default function Body() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [likedPosts, setLikedPosts] = useState(new Set());
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true" || false
-  );
+
 
   const Navigate = useNavigate();
   
@@ -38,24 +36,7 @@ export default function Body() {
     return imgArray[randomIndex];
   };
 
-  useEffect(() => {
-    // Disable transitions during theme switch
-    document.documentElement.classList.add("no-transitions");
-    
-    // Apply dark mode class to document
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("darkMode", "true");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("darkMode", "false");
-    }
-    
-    // Re-enable transitions after a brief delay
-    setTimeout(() => {
-      document.documentElement.classList.remove("no-transitions");
-    }, 50);
-  }, [darkMode]);
+ 
 
   useEffect(() => {
     async function fetchData() {

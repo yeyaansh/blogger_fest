@@ -1,16 +1,19 @@
 import LoginForm from "./components/authentication/login-form.jsx";
 import RegisterForm from "./components/authentication/register-form.jsx";
-// import { ModeToggle } from "./components/mode-toggle";
 import Header from "./controller/Header";
 import Body from "./controller/Body";
 import Footer from "./controller/Footer";
 import { Routes, Route } from "react-router";
 import NoPage from "./components/pages/NoPage";
 import ShowPostById from "./utilis/showPostById.jsx";
+import {ThemeProvider} from "@/components/theme-provider.jsx";
+import { useDispatch, useSelector } from "react-redux";
 function App() {
-  // const classTame = " w-full min-w-3xs max-w-xs";
+  const data = useSelector((state)=> state.slice1.darkMode)
+console.log(data)
   return (
     <>
+    <ThemeProvider defaultTheme={data} storageKey="vite-ui-theme">
       <div className="m-3">
         <Header></Header>
         <Routes>
@@ -34,7 +37,7 @@ function App() {
         </Routes>
 
         <Footer></Footer>
-      </div>
+      </div></ThemeProvider>
     </>
   );
 }

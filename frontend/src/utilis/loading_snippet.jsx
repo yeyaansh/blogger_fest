@@ -1,9 +1,14 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import './loading_snippet.css';
+import { useState, useEffect } from 'react';
 
 const LiquidMorphLoader = () => {
+
+
+const currentTheme = useSelector((state) => state.slice1.darkMode)
+  console.log(currentTheme)
   return (
-    <div className="liquid-loader-container">
+    <div className={`liquid-loader-container ${currentTheme}`}>
       <div className="liquid-loader">
         <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -23,16 +28,6 @@ const LiquidMorphLoader = () => {
           </g>
         </svg>
       </div>
-      
-      {/* <div className="liquid-text">
-        <span className="letter">L</span>
-        <span className="letter">o</span>
-        <span className="letter">a</span>
-        <span className="letter">d</span>
-        <span className="letter">i</span>
-        <span className="letter">n</span>
-        <span className="letter">g</span>
-      </div> */}
     </div>
   );
 };
