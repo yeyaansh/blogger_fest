@@ -10,6 +10,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEN_API_KEY });
 const aiGenerated = async(input)=>{
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
+    // model: "gemini-2.5-pro",
     contents: input,
 
     config: {

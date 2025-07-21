@@ -16,7 +16,10 @@ This is an AI powered Blog Website with multiple features.
 <li>
 <details>
 <summary><strong>Improvements</strong></summary>
-<i> Needs Improvement;
+<i>
+<ul>
+<li>Fix 'Forget your password?' in login page!</li>
+</ul>>
 </i>
 
 </details></li>
@@ -136,6 +139,31 @@ By following these guidelines, you can leverage the benefits of Immer and Redux 
 </details>
 </details>
 </li>
+<li>
+<details>
+<summary>fetch data in ascending order</summary>
+await collectionName.find().sort({_id: -1})
+<!-- fetches data in recent creation time -->
+<details><summary>more info.</summary>
+Here's a detailed explanation of sort({_id: -1}) in MongoDB:
+sort() method: This is a MongoDB method used to order the documents returned by a query. You apply it to the result of a find() query to specify the order in which documents should be returned.
+{_id: -1}: This is the argument passed to the sort() method. It's a document that specifies the field to sort by and the sort order.
+_id: This refers to the special _id field in MongoDB documents. Each document in a collection is required to have a unique _id field, which acts as the primary key.
+-1: This value indicates that the sorting should be in descending order. 
+In essence, sort({_id: -1}) tells MongoDB to:
+Use the _id field as the basis for sorting: Since the _id field is a special ObjectID type that includes a timestamp component, sorting by _id allows you to sort documents by their creation order.
+Sort in descending order: This means that the documents with the most recent _id values (and thus the most recent creation times) will appear first in the results. 
+Why sort by _id for "latest" data?
+As mentioned in the previous explanation, the default _id in MongoDB is an ObjectId which contains a timestamp. Because of this, sorting by _id in descending order provides a simple and efficient way to retrieve the most recently created documents in a collection. 
+Example:
+javascript
+db.yourCollectionName.find().sort({_id: -1}).limit(1)
+Use code with caution.
+
+This query would return a cursor to the single document with the largest (most recent) _id value, essentially retrieving the latest document created in yourCollectionName. 
+It's important to remember that while the _id timestamp can be used to infer creation order, it's not a precise timestamp of the exact insertion time. There are other components to the _id that can influence the sort order within a single second. If you need very precise sorting by insertion time, using a dedicated timestamp field (like createdAt) and indexing it is generally a better approach. </details>
+</details>
+</li>
 </ul>
 
 </details></li>
@@ -151,6 +179,10 @@ By following these guidelines, you can leverage the benefits of Immer and Redux 
 <li>Password Hashing (bcrypt)</li>
 <li>Validator (to check email and strong password)</li>
 <li>React-Markdown (to format the text coming from database)</li>
+<li>Redux (for global data sharing)</li>
+<li>ShadcnUI (for register and login page)</li>
+<li>React Hook Form</li>
+<li>Zod (for react hook form's validation inclusive of zodResolver)</li>
 </ul>
 </details></li>
 </ol>

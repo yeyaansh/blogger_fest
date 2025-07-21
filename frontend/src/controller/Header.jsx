@@ -57,7 +57,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Title */}
+          <motion.a href="/">
           <motion.div
+            
             className="flex items-center flex-shrink-0 cursor-pointer"
             whileHover={{ scale: 1.03 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
@@ -84,7 +86,7 @@ export default function Header() {
               </motion.p>
             </motion.div>
           </motion.div>
-
+</motion.a>
           {/* Desktop Search Bar */}
           <motion.div
             className="hidden md:flex flex-1 mx-8 relative justify-center"

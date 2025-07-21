@@ -6,10 +6,9 @@ import genCookie from "../utils/generate_cookie.js";
 
 const createProfile = async (req, res) => {
   try {
+    req.body.role = "user";
     verifyInputDetails(req.body);
     req.body.password = await bcrypt.hash(req.body.password, 10);
-
-    req.body.role = "user";
 
     const user_data = await User.create(req.body);
     console.log(user_data);
