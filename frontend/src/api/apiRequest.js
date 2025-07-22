@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // Determine the baseURL based on the environment
 const baseURL = process.env.NODE_ENV === 'production'
-  ? 'https://api.vergedraft.yeyaansh.com' // Production URL
+  ? 'https://vergedraft.vercel.app/' // Production URL
   : 'http://localhost:3445'; // Development URL
 
 // Create a new Axios instance
