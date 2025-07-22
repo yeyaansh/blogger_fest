@@ -2,20 +2,16 @@
 
 import axios from 'axios';
 
-// Create a new Axios instance with a custom configuration
-const apiClient = axios.create({
-  // The base URL of your API
-  baseURL: 'http://localhost:3445', 
-  
-  // This will be sent with every request
-  withCredentials: true, 
+// Determine the baseURL based on the environment
+const baseURL = process.env.NODE_ENV === 'production'
+  ? 'https://yeyaansh.com/projects/vergedraft' // Production URL
+  : 'http://localhost:3445'; // Development URL
 
-  // You can add other default settings here, like headers
-  // headers: {
-  //   'Content-Type': 'application/json',
-  //   'X-Requested-With': 'XMLHttpRequest',
-  // },
+// Create a new Axios instance
+const apiClient = axios.create({
+  baseURL: baseURL,
+  withCredentials: true,
 });
 
-// Export the configured instance to be used throughout your app
+// Export the configured instance
 export default apiClient;
