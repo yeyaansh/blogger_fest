@@ -45,8 +45,16 @@ app.use(cookieParser());
 app.use("/account", account);
 app.use("/user", contentGen);
 
-await Promise.all([mongodb_db(), redis_db()]);
+async function startServer(){
 
-app.listen(process.env.EXPRESS_PORT, async () => {
+await Promise.all([mongodb_db(),redis_db()]);
+
+ app.listen(process.env.EXPRESS_PORT, async () => {
+ await connect();
   console.log(`Server is listening at PORT: ${process.env.EXPRESS_PORT}`);
 });
+ 
+}
+
+startServer();
+

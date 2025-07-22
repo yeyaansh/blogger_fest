@@ -3,13 +3,13 @@ const blog_post_schema = new Schema(
   {
     title: {
       type: String,
-      minLenth: 3,
+      minLength: 3,
       maxLength: 100,
       required: true,
     },
     description: {
       type: String,
-      requried: true,
+      required: true,
     },
 
     tags: [
