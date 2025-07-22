@@ -11,7 +11,7 @@ const app = express();
 
 const allowedOrigins =
   process.env.NODE_ENV === "production"
-    ? ["https://yeyaansh.com", "https://api.yeyaansh.com","http://www.solveimpact.com/"] // Production origins
+    ? ["https://yeyaansh.com", "https://api.yeyaansh.com","http://www.solveimpact.com/","https://www.solveimpact.com/"] // Production origins
     : ["http://localhost:5173"]; // Development origin
 
 // You MUST specify the exact origin. A wildcard (*) is not allowed
